@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>{% block title %} Депозитный калькулятор {% endblock %}</h1>
+
+<form method="post">
+    <div class="form-group">
+        <label for="title">Начальный депозит</label>
+        <input type="text" name="sum"
+                class="form-control"
+               value="{{ request.form['sum'] }}"></input>
+    </div>
+    <div class="form-group">
+        <label for="content">Срок в месяцах</label>
+        <input type="text" name="srok"
+               class="form-control"
+               value="{{ request.form['srok'] }}"></input>
+    </div>
+    <div class="form-group">
+        <label for="content">Годовая %-ставка</label>
+        <input type="text" name="stavka"
+                class="form-control"
+               value="{{ request.form['stavka'] }}"></input>
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Рассчитать</button>
+    </div>
+
+    {% if table %}
+
+    <div style="background-color:#eeeeee; border:1px solid #cccccc; padding:5px 10px; text-align:center">{{ summaItog }}</div>
+    <div style="background-color:#eeeeee; border:1px solid #cccccc; padding:5px 10px; text-align:center">{{ plus }}</div>
+    <table id="data" class="table table-striped">
+    <thead>
+      <tr>
+        <th>Номер месяца</th>
+        <th>Доход в месяц</th>
+        <th>Итог на месяц</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for post in table %}
+        <tr>
+          <td>{{ post['N'] }}</td>
+          <td>{{ post['sum1']  }}</td>
+          <td>{{ post['itog'] }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% endif %}
+
+
+
+</form>
+{% endblock %}
