@@ -48,7 +48,7 @@ def signup():
 
         profit = (initialSum * percentOnMonth * months)
         endSum = profit + initialSum
-        return render_template('index.html',
+        return render_template('index2.html',
                                table=t,
                                summaItog="Итоговая сумма = {} руб".format(round(endSum, 3)),
                                plus="Доход = {} руб".format(round(profit, 3)))
@@ -112,7 +112,7 @@ def signup():
     #             conn.close()
     #         return redirect(url_for('signup'))
     #     else:
-    return render_template('index.html')
+    return render_template('index2.html')
 
 
 if __name__ == '__main__':
